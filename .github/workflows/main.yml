@@ -27,4 +27,4 @@ jobs:
           server: ${{ secrets.FTP_HostName }}
           username: ${{ secrets.FTP_Username }}
           password: ${{ secrets.FTP_Password }}
-          server-dir: /
+          server-dir: /htdocs/laravel/
