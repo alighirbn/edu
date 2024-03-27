@@ -25,6 +25,8 @@ jobs:
         run: npm install
       - name: npm audit fix
         run: npm audit fix
+      - name: npm run build
+        run: npm run build
       - name: Generate storage link
         run: php artisan storage:link
       - name: Directory Permissions
