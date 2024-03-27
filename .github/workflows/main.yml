@@ -23,8 +23,8 @@ jobs:
         run: php artisan config:clear 
       - name: npm install
         run: npm install
-      - name: npm run
-        run: npm run dev
+      - name: npm audit fix
+        run: npm audit fix
       - name: Generate storage link
         run: php artisan storage:link
       - name: Directory Permissions
