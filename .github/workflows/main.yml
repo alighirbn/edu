@@ -18,7 +18,11 @@ jobs:
       - name: Generate key
         run: php artisan key:generate
       - name: Fix composer 
-        run: php artisan config:cache &&  php artisan config:clear &&  composer dump-autoload -o
+        run: php artisan config:cache
+      - name: Fix composer 
+        run: php artisan config:clear 
+      - name: Fix composer 
+        run: composer dump-autoload -o
       - name: Generate storage link
         run: php artisan storage:link
       - name: Directory Permissions
