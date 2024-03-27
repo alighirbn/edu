@@ -17,10 +17,14 @@ jobs:
         run: composer update --ignore-platform-reqs
       - name: Generate key
         run: php artisan key:generate
-      - name: Fix composer 
+      - name: Fix composer cache
         run: php artisan config:cache
-      - name: Fix composer 
+      - name: Fix composer clear
         run: php artisan config:clear 
+      - name: npm install
+        run: npm install
+      - name: npm run
+        run: npm run dev
       - name: Generate storage link
         run: php artisan storage:link
       - name: Directory Permissions
