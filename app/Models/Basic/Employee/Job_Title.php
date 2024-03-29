@@ -11,5 +11,7 @@ class Job_Title extends Model
     protected $table = 'job_title';
     protected $fillable = [
         'job_title',
+        'next_job_title_id',
+        'job_grade_id',
     ];
 }
