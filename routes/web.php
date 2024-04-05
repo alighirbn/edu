@@ -60,6 +60,9 @@ require __DIR__.'/financial/financial_default.php';
 require __DIR__.'/financial/payroll.php';
 require __DIR__.'/financial/payroll_date.php';
 
+
+// Hr
+require __DIR__.'/hr/raise.php';
 //profile routes
 require __DIR__.'/profile.php';
 

@@ -31,6 +31,9 @@
 
     <script src="{{ asset('js/bootstrap.bundle.min.js')}}"></script> 
 
+    <!-- Boxicons js -->
+    <script src="{{ asset('js/boxicons.js')}}"></script> 
+
     <!--  jquery cdn datatable -->
     <script src="{{ asset('js/jquery-3.7.1.min.js')}}"></script>
 
