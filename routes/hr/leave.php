@@ -7,6 +7,5 @@ Route::group(['prefix' => 'hr/leave'], function() {
 
    
         Route::get('/create', [LeaveController::class, 'create'])->middleware(['auth','verified'])->name('leave.create');
-        Route::get('/view', [LeaveController::class, 'view'])->middleware(['auth','verified'])->name('leave.view');
 
 });
