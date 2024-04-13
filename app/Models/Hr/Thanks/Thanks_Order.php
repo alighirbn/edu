@@ -2,6 +2,8 @@
 
 namespace App\Models\Hr\Thanks;
 
+use App\Models\Basic\Facility\Facility;
+use App\Models\Department;
 use App\Models\Managment\Issued_Order;
 use App\Models\Order_Type;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,6 +23,19 @@ class Thanks_Order extends Model
     public function get_thanks_order_line()
     {
         return $this->hasMany(Thanks_Order_Line::class, 'thanks_order_id', 'id');
+    }
+    public function get_department()
+    {
+        return $this->hasone(Department::class, 'id', 'department_id');
+    }
+    public function get_main_facility()
+    {
+        return $this->hasone(Facility::class, 'id', 'main_facility_id');
+    }
+
+    public function get_sub_facility()
+    {
+        return $this->hasone(Facility::class, 'id', 'sub_facility_id');
     }
 
     public function get_order_type()

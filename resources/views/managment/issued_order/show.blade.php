@@ -21,10 +21,11 @@
 
                             <table class="table table-striped">
                                 <thead>
-                                    <th scope="col" width="20%">{{ __('word.name') }}</th>
+                                    <th scope="col" width="15%">{{ __('word.name') }}</th>
+                                    <th scope="col" width="15%">{{ __('word.guard') }}</th>
+                                    <th scope="col" width="15%">{{ __('word.guard') }}</th>
                                     <th scope="col" width="20%">{{ __('word.guard') }}</th>
-                                    <th scope="col" width="20%">{{ __('word.guard') }}</th>
-                                    <th scope="col" width="20%">{{ __('word.guard') }}</th>
+                                    <th scope="col" width="25%">{{ __('word.guard') }}</th>
                                 </thead>
 
                                 @foreach ($issued_orders as $issued_order)
@@ -32,7 +33,8 @@
                                         <td>{{ $issued_order->order_number }}</td>
                                         <td>{{ $issued_order->order_date }}</td>
                                         <td>{{ $issued_order->issued_orderable->get_order_type->order_type }}</td>
-                                        <td>{{ $issued_order->issued_orderable_type }}</td>
+                                        <td>{{ $issued_order->issued_orderable->get_department->department }} /{{ $issued_order->issued_orderable->get_main_facility->name }} / {{ $issued_order->issued_orderable->get_sub_facility->name }}</td>
+                                        <td>{{ $issued_order->issued_orderable->order_text }}</td>
                                     </tr>
                                 @endforeach
 

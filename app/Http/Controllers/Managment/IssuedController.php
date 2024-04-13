@@ -1,53 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Hr;
+namespace App\Http\Controllers\Managment;
 
 use App\Http\Controllers\Controller;
-use App\Models\Basic\Employee\Employee;
 use App\Models\Hr\Leave\Leave_Order;
 use App\Models\Hr\Thanks\Thanks_Order;
 use App\Models\Managment\Issued\Issued_Order;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class LeaveController extends Controller
+class IssuedController extends Controller
 {
-    public function create()
+    public function employee()
     {
-        $start = now();
-        $employee = Employee::with('get_work_address')->first();
 
-        $leave = new Leave_Order([
-            'department_id' => 1,
-            'main_facility_id' => 1,
-            'sub_facility_id' => 2,
-            'order_type_id' => 2,
-            'order_text' => $employee->full_name,
-            'employee_id' => $employee->id,
-            'employee_facility_id' => $employee->get_work_address->id,
-        ]);
-
-        $leave->save();
-
-        $issued_order = new Issued_Order([
-            'url_address' => $this->get_random_string(60),
-            'department_id' => 1,
-            'main_facility_id' => 1,
-            'sub_facility_id' => 2,
-            'issued_facility_id' => 3,
-            'order_number' => strval(rand(10, 1000)),
-            'order_date' => now(),
-        ]);
-        $leave->issued_order()->save($issued_order);
-
-        return now()->diffInMilliseconds($start);
-    }
-
-    public function view()
-    {
-        $issued_orders = Issued_Order::query()->with(['issued_orderable' => function (MorphTo $morphTo) {
+        $issued_orders = Issued_Order::with(['issued_orderable' => function (MorphTo $morphTo) {
             $morphTo->morphWith([
-                Leave_Order::class => ['get_employee', 'get_order_type', 'get_main_facility', 'get_sub_facility', 'get_department'],
-                Thanks_Order::class => ['get_thanks_order_line', 'get_order_type', 'get_main_facility', 'get_sub_facility', 'get_department'],
+                Leave_Order::class => ['get_employee', 'get_order_type','get_main_facility','get_sub_facility','get_department'],
+                Thanks_Order::class => ['get_thanks_order_line', 'get_order_type','get_main_facility','get_sub_facility','get_department'],
             ]);
         }])->whereHasMorph('issued_orderable', Leave_Order::class, function ($query) {
             $query->where('employee_id', 10);
@@ -59,11 +28,11 @@ class LeaveController extends Controller
             })->orderby('created_at')
             ->paginate(20);
 
-        // return $issued_orders;
 
         return view('managment.issued_order.show', compact('issued_orders'));
 
     }
+    
 
     public function get_random_string($length)
     {
