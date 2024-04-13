@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('thanks_book', function (Blueprint $table) {
+        Schema::create('thanks_order_line', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('thanks_order_id')->nullable();
+            $table->foreign('thanks_order_id')->references('id')->on('thanks_orders');
         
             $table->unsignedBigInteger('employee_id')->nullable();
             $table->foreign('employee_id')->references('id')->on('employees');
@@ -20,7 +23,8 @@ return new class extends Migration
             $table->unsignedBigInteger('raise_line_id')->nullable();
             $table->foreign('raise_line_id')->references('id')->on('raise_line');
 
-            $table->date('stage_date')->nullable();
+            $table->unsignedBigInteger('thanks_order_status_id')->nullable();
+            $table->foreign('thanks_order_status_id')->references('id')->on('thanks_order_status');
 
         });
     }
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('thanks_book');
+        Schema::dropIfExists('thanks_order_line');
     }
 };

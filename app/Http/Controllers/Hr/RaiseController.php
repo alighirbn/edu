@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Hr;
 use App\Http\Controllers\Controller;
 use App\Models\Basic\Employee\Employee;
 use App\Models\Hr\Raise\Raise_Line;
-use App\Models\Hr\Thanks_Book\Thanks_Book;
+use App\Models\Hr\Thanks\Thanks_Order;
 use Carbon\Carbon;
 
 class RaiseController extends Controller
 {
-
     public function create()
     {
         $start = now();
@@ -61,7 +60,7 @@ class RaiseController extends Controller
         }
 
         foreach (array_chunk($data, 10000) as $part) {
-            Thanks_Book::insert($part);
+            Thanks_Order::insert($part);
         }
 
         foreach (array_chunk($data_raise, 10000) as $part) {

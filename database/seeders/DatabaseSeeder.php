@@ -4,12 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Basic\Facility\Duality;
-use App\Models\Basic\Facility\Main_Section;
-use App\Models\Basic\Facility\School_Invironment;
-use App\Models\Basic\Facility\School_Time;
 use App\Models\province;
 use Illuminate\Database\Seeder;
+use App\Models\Basic\Facility\Duality;
+use App\Models\Basic\Facility\School_Time;
+use App\Models\Basic\Facility\School_Invironment;
 
 
 class DatabaseSeeder extends Seeder
@@ -32,6 +31,8 @@ class DatabaseSeeder extends Seeder
           Department_Seeder::class,
           YesNo_Seeder::class,
           Amount_Type_Seeder::class,
+          Order_Type_Seeder::class,
+          Thanks_Order_Status_Seeder::class,
           
           //Facility Seeders
           Main_Sections_Seeder::class,
@@ -41,6 +42,7 @@ class DatabaseSeeder extends Seeder
           Facility_Type_Seeder::class,
           Facility_Seeder::class,
           Schools_Seeder::class,
+          
           //employees seeders
           Agricultural_Risk_Seeder::class,
           Driver_Allowance_Seeder::class,
@@ -67,7 +69,6 @@ class DatabaseSeeder extends Seeder
           Security_Guard_Seeder::class,
           Employee_Seeder::class,
 
-          
           //Finacial Seeders
           Salary_Scale_Seeder::class,
           

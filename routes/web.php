@@ -72,6 +72,10 @@ Route::group(['middleware' => 'checkStatus'], function () {
 
 // Hr
     require __DIR__ . '/hr/raise.php';
+    require __DIR__ . '/hr/leave.php';
+    require __DIR__ . '/hr/thanks.php';
+
+
 //profile routes
     require __DIR__ . '/profile.php';
 
