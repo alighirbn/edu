@@ -19,15 +19,6 @@ return new class extends Migration
             //unique
             $table->string('url_address', '60')->unique()->nullable();
 
-            $table->unsignedBigInteger('department_id')->nullable();
-            $table->foreign('department_id')->references('id')->on('department');
-
-            $table->unsignedBigInteger('main_facility_id')->nullable();
-            $table->foreign('main_facility_id')->references('id')->on('facilitys');
-
-            $table->unsignedBigInteger('sub_facility_id')->nullable();
-            $table->foreign('sub_facility_id')->references('id')->on('facilitys');
-
             $table->unsignedBigInteger('issued_facility_id')->nullable();
             $table->foreign('issued_facility_id')->references('id')->on('facilitys');
 
@@ -37,7 +28,6 @@ return new class extends Migration
             $table->unsignedBigInteger('issued_orderable_id');
             $table->string('issued_orderable_type');
             $table->index(['issued_orderable_id', 'issued_orderable_type']);
-
         });
     }
 

@@ -30,9 +30,6 @@ class LeaveController extends Controller
 
         $issued_order = new Issued_Order([
             'url_address' => $this->get_random_string(60),
-            'department_id' => 1,
-            'main_facility_id' => 1,
-            'sub_facility_id' => 2,
             'issued_facility_id' => 3,
             'order_number' => strval(rand(10, 1000)),
             'order_date' => now(),

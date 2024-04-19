@@ -4,7 +4,7 @@ namespace App\Models\Hr\Thanks;
 
 use App\Models\Basic\Facility\Facility;
 use App\Models\Department;
-use App\Models\Managment\Issued_Order;
+use App\Models\Managment\Issued\Issued_Order;
 use App\Models\Order_Type;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -49,5 +49,9 @@ class Thanks_Order extends Model
         'sub_facility_id',
         'order_type_id',
         'order_text',
+        'order_copy',
+        'url_address',
+        'user_id_create',
+        'user_id_update',
     ];
 }

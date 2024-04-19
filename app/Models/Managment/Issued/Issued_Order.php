@@ -19,9 +19,6 @@ class Issued_Order extends Model
 
     protected $fillable = [
         'url_address',
-        'department_id',
-        'main_facility_id',
-        'sub_facility_id',
         'issued_facility_id',
         'order_number',
         'order_date',

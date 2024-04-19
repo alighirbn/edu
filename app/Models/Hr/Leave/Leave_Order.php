@@ -5,7 +5,7 @@ namespace App\Models\Hr\Leave;
 use App\Models\Basic\Employee\Employee;
 use App\Models\Basic\Facility\Facility;
 use App\Models\Department;
-use App\Models\Managment\Issued_Order;
+use App\Models\Managment\Issued\Issued_Order;
 use App\Models\Order_Type;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -53,5 +53,9 @@ class Leave_Order extends Model
         'order_text',
         'employee_id',
         'employee_facility_id',
+        'order_copy',
+        'url_address',
+        'user_id_create',
+        'user_id_update',
     ];
 }

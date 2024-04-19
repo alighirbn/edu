@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('leave_orders', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('url_address', '60');
             
             $table->unsignedBigInteger('department_id')->nullable();
             $table->foreign('department_id')->references('id')->on('department');
@@ -27,7 +28,8 @@ return new class extends Migration
             $table->unsignedBigInteger('order_type_id')->nullable();
             $table->foreign('order_type_id')->references('id')->on('order_types');
 
-            $table->string('order_text',500)->nullable();
+            $table->text('order_text')->nullable();
+            $table->text('order_copy')->nullable();
 
             $table->unsignedBigInteger('employee_id')->nullable();
             $table->foreign('employee_id')->references('id')->on('employees');
@@ -35,7 +37,10 @@ return new class extends Migration
             $table->unsignedBigInteger('employee_facility_id')->nullable();
             $table->foreign('employee_facility_id')->references('id')->on('facilitys');
             
-
+            $table->unsignedBigInteger('user_id_create')->nullable();
+            $table->foreign('user_id_create')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id_update')->nullable();
+            $table->foreign('user_id_update')->references('id')->on('users');
         });
     }
 
