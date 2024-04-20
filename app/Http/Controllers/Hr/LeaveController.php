@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Hr;
 
 use App\Http\Controllers\Controller;
-use App\Models\Basic\Employee\Employee;
 use App\Models\Hr\Leave\Leave_Order;
 use App\Models\Hr\Thanks\Thanks_Order;
+use App\Models\Basic\Employee\Employee;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Models\Managment\Issued\Issued_Order;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
@@ -17,6 +18,7 @@ class LeaveController extends Controller
         $employee = Employee::with('get_work_address')->first();
 
         $leave = new Leave_Order([
+            'url_address' => $this->get_random_string(60),
             'department_id' => 1,
             'main_facility_id' => 1,
             'sub_facility_id' => 2,
@@ -36,7 +38,7 @@ class LeaveController extends Controller
         ]);
         $leave->issued_order()->save($issued_order);
 
-        return now()->diffInMilliseconds($start);
+        return QrCode::generate($leave->url_address);
     }
 
     public function get_random_string($length)

@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('order_type', '40');
+
+            // $table->unsignedBigInteger('employee_id')->nullable();
+            // $table->foreign('employee_id')->references('id')->on('employees');
         });
     }
 
